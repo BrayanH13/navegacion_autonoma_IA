@@ -2,7 +2,7 @@
 
 Plataforma de navegación autónoma que integra un LiDAR **Velodyne VLP-16** y la cámara de un **iPhone 16e**, montados sobre una **base 3D diseñada a medida** e impresa en 3D, con alimentación autónoma a batería.
 
-> Marcadores `[COMPLETAR]`: datos que debes verificar o llenar con la información real de tu montaje.
+> Marcadores : datos que debes verificar o llenar con la información real de tu montaje.
 
 ---
 
@@ -46,11 +46,9 @@ El VLP-16 tiene un campo de visión vertical de ±15° y 360° horizontal. La ba
 El iPhone 16e cuenta con una sola cámara trasera y dimensiones propias (aprox. 146.7 × 71.5 × 7.8 mm). La base incluye un alojamiento que:
 - Sujeta el teléfono sin tapar la lente ni los botones necesarios.
 - Permite retirarlo para cargarlo o usarlo.
-- Mantiene la cámara a una altura y orientación definidas `[COMPLETAR: altura y ángulo]`.
+- Mantiene la cámara a una altura y orientación definidas .
 
 ### 4. Interfaz con la plataforma y el VLP-16
-- Patrón de agujeros diseñado para el montaje en la base del VLP-16 `[COMPLETAR: tornillería, p. ej. M3/M4]`.
-- Patrón de fijación al chasis del robot `[COMPLETAR]`.
 - Espacio para el **Interface Box** del VLP-16 y el paso de cables.
 
 ### 5. Gestión de vibraciones y peso
@@ -67,10 +65,10 @@ Imprimir en 3D permite iterar rápido, ajustar tolerancias y que cualquiera pued
 |---|---|
 | LiDAR | Velodyne VLP-16 (Puck), 16 canales, alimentación 9–18 V |
 | Cámara | iPhone 16e (cámara trasera) |
-| Base | Pieza impresa en 3D (ver `/cad`) |
+| Base | Pieza impresa en 3D (ver `/base`) |
 | Batería | LiPo 2S (2 celdas), 2000 mAh (2 Ah), descarga 2C, recargable |
 | Regulador | Módulo elevador de voltaje DC-DC **XL6009** (step-up), ajustado a 12 V |
-| Cómputo | `[COMPLETAR: Jetson / Raspberry Pi / portátil]` |
+| Cómputo |  portátil o Jetson |
 
 ---
 
@@ -130,15 +128,13 @@ El VLP-16 consume aproximadamente **8 W**. Al elevar de 7.2 V a 12 V, la corrien
 
 ```
 .
-├── cad/            # Modelos 3D (STEP / STL) de la base
-├── docs/           # Fotos, diagramas y notas de montaje
+├── base/            # Modelos 3D (STEP / STL) de la base
+├── data/           # Fotos, diagramas y notas de montaje
 ├── electronics/    # Esquemas de conexión y hojas de datos
 ├── src/            # Código de percepción y navegación
 ├── calibration/    # Calibración extrínseca LiDAR–cámara
 └── README.md
 ```
-`[COMPLETAR: ajustar a tu estructura real]`
-
 ---
 
 ## Impresión de la base
@@ -149,7 +145,6 @@ El VLP-16 consume aproximadamente **8 W**. Al elevar de 7.2 V a 12 V, la corrien
 | Altura de capa | 0.2 mm |
 | Relleno | 30–40 % |
 | Perímetros | 4 o más |
-| Soportes | `[COMPLETAR]` |
 
 Se recomienda insertos roscados de latón o tuercas embebidas para los puntos de fijación del LiDAR.
 
@@ -164,11 +159,11 @@ Se recomienda insertos roscados de latón o tuercas embebidas para los puntos de
 ## Instalación y uso
 
 ```bash
-git clone https://github.com/[USUARIO]/[REPOSITORIO].git
-cd [REPOSITORIO]
+git clone https://github.com/BrayanH13/navegacion_autonoma_IA.git
+cd navegacion_autonoma_IA
 ```
 
-1. Imprime la base (`/cad`) y ensambla LiDAR e iPhone.
+1. Imprime la base (`/base`) y ensambla LiDAR e iPhone.
 2. Conecta la alimentación siguiendo la sección de electrónica.
 3. Configura la red del VLP-16 (por defecto, IP `192.168.1.201`; configura tu equipo en la misma subred).
 4. Ejecuta el nodo de adquisición `[COMPLETAR: comandos, p. ej. ROS 2]`.
@@ -188,18 +183,19 @@ cd [REPOSITORIO]
 
 ## Trabajo futuro
 
-- [ ] Reducir el peso de la base con optimización topológica.
+- [ ] Modificacion SDK del lidar para rango de mapeo y distancia.
 - [ ] Incorporar protección (fusible, interruptor general y alarma de bajo voltaje de la LiPo).
-- [ ] Evaluar PETG/ASA si la base se expone a calor.
 - [ ] Sustituir el módulo elevador por uno con mayor margen de corriente, si es necesario.
 - [ ] Automatizar la calibración extrínseca.
+- [ ] Evaluar respuesta del sensor LiDAR a diferentes niveles de carga, de ser necesario contar con una bateria de repuesto
 
 ---
 
 ## Licencia
 
-`[COMPLETAR: p. ej. MIT para el código, CC BY-SA 4.0 para los modelos 3D]`
+- Fusion360 o CAD
 
 ## Autor
 
-`[COMPLETAR: nombre, universidad/grupo, contacto]`
+Brayan David Herrera Diaz, Maestría en IA Universidad Pontificia Javeriana Bogotá DC
+herreradiaz13@gmail.com
